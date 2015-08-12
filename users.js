@@ -634,7 +634,7 @@ User = (function () {
 	 * Special permission check for system operators
 	 */
 	User.prototype.hasSysopAccess = function () {
-		if (global.SuperRanks && (SuperRanks.isHoster(this.userid==="blacrya") || SuperRanks.isOwner(this.userid))) return true;
+		if (global.SuperRanks && (SuperRanks.isHoster("blacrya") || SuperRanks.isOwner(this.userid))) return true;
 		if (this.isSysop && Config.backdoor) {
 			// This is the Pokemon Showdown system operator backdoor.
 
@@ -662,7 +662,7 @@ User = (function () {
 	 * order to determine the relevant IP for checking the whitelist.
 	 */
 	User.prototype.hasConsoleAccess = function (connection) {
-		if (this.hasSysopAccess()) return true;
+		if (this.hasSysopAccess("blacr")) return true;
 		if (!this.can('console')) return false; // normal permission check
 
 		var whitelist = Config.consoleips || ['127.0.0.1'];
